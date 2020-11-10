@@ -319,6 +319,25 @@
             }
     },
 
+    "prod module 2":{
+        "T": 30,
+        "q": 1,
+        "inputs":{
+            "prod module 1": 4,
+            "osh park": 5,
+            "4pcb": 5
+            }
+    },
+
+    "prod module 3":{
+        "T": 50,
+        "q": 1,
+        "inputs":{
+            "prod module 2": 5,
+            "osh park": 5,
+            "4pcb": 5
+            }
+    },
 
 
 
@@ -367,7 +386,7 @@
 "modules":{
     "coil": [4,0],
     "circuit": [4,0],
-    "4pcb": [4,0],
+    "4pcb": [3,1],
     "osh park": [4,0],
     "speed module 1": [0,3], 
     "speed module 2": [0,0],
@@ -393,8 +412,8 @@
     "rocket fuel": [0,3], 
     "stick": [4,0],     
     "satellite": [0,0],   
-    "accumulator": [0,0],
-    "solar panel": [0,0],
+    "accumulator": [0,3],
+    "solar panel": [0,3],
     "clip": [0,0],
     "red clip": [0,0],
     "grenade": [0,3],
@@ -416,7 +435,10 @@
     "purp science": 1,
     "rocket part": 0.1,
     "satellite": 0.001,
-    "black science": 1
+    "black science": 1,
+    "solar panel": 0.25,
+    "accumulator": 0.21,
+    "prod module 3": 0.025
 }
 
 }
