@@ -14,9 +14,12 @@ class Recipe():
         self.T = T
         self.inputs = inputs
 
+        self.Fb = 1.25*q/T #The base frequency per machine
+
         self.extra = 0 #The number of excess products per second to produce
-        #This is the base frequency of each input
-        self.Fib = {name: N/q*1.25/T for k:N in inputs}
+#        self.Fib = {name: N/q*1.25/T for name,N in inputs.items()}
+        #This is the base number of each input required per output
+        self.Nib = {name: N/q for name,N in inputs.items()}
 
     def get_inputs(self, Fo, Np, Ns):
         """
@@ -27,14 +30,40 @@ class Recipe():
         {name: rate}
         """
         out_rates = {
-            name: Fi*(1+.1*Np)*(1+.5*Ns-.15*Np)
-            for Fi in name:self.Fib
+            name: Fo*Ni/(1+.1*Np)
+            for name, Ni in self.Nib.items()
             }
 
         return out_rates
 
+    def get_assemblers(self, Fo, Np, Ns):
+        Feff = self.Fb*(1+.5*Ns-.15*Np)*(1+.1*Np)
+        N = Fo/Feff
+        return N
 
 class Factory():
     def __init__(self, filename):
         raw = json.load(open(filename, 'r'))
+        self.recipes = {}
+        for name, data in raw['recipes'].items() :
+            self.recipes[name] = Recipe(name, **data)
+        self.modules = raw['modules']
+
+    def print(self):
+        for name, rec in self.recipes.items():
+            _mods = self.modules[name]
+            mods = {'Np': _mods[0], 'Ns': _mods[1]}
+            Fo = 45
+
+            print(f'Recipe {name} at {Fo}/s with Np = {mods["Np"]} and Ns = {mods["Ns"]}')
+            N = rec.get_assemblers(Fo, **mods)
+
+            print(f'Requires {N:.2f} assemblers to produce')
+
+            in_rates = rec.get_inputs(Fo, **mods)
+
+            for in_name, rate in in_rates.items():
+                print(f'  {in_name}: {rate}/s')
+
+
 

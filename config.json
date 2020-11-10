@@ -1,0 +1,27 @@
+{"recipes":{
+    "coil": {
+        "T": 0.5,
+        "q": 2,
+        "inputs": {
+            "copper plate": 1
+            }
+        },
+    "circuit": {
+        "T": 0.5,
+        "q": 1,
+        "inputs": {
+            "coil": 3,
+            "iron plate": 1
+            }
+        }
+},
+"modules":{
+    "coil": [4,0],
+    "circuit": [4,0]
+}
+"goals":{
+    "circuit": 45,
+    "copper plate": 45
+}
+
+}
