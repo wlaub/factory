@@ -15,14 +15,287 @@
             }
         },
     "4pcb":{
-        "T":10,
+        "T":6,
         "q":1,
         "inputs": {
-            "coil": 1,
+            "coil": 4,
             "circuit": 2,
-            "plastic": 1
+            "plastic": 2
             }
     },
+    "osh park":{
+        "T": 10,
+        "q": 1,
+        "inputs":{
+            "h2so4": 5,
+            "circuit": 20,
+            "4pcb": 2
+            }
+    },
+    "gear":{
+        "T": 0.5,
+        "q": 1,
+        "inputs":{
+            "iron plate": 2
+            }
+    },
+    "pipe":{
+        "T": 0.5,
+        "q": 1,
+        "inputs":{
+            "iron plate": 1
+            }
+    },
+ 
+    "red science":{
+        "T": 5,
+        "q": 1,
+        "inputs":{
+            "gear": 1,
+            "copper plate": 1
+            }
+    },
+    "belt": {
+        "T": 0.5,
+        "q": 2,
+        "inputs":{
+            "gear": 1,
+            "iron plate": 1
+            }
+    },
+    "inserter": {
+        "T": 0.5,
+        "q": 1,
+        "inputs":{
+            "gear": 1,
+            "iron plate": 1,
+            "circuit": 1
+            }
+    },
+    "engine": {
+        "T": 10,
+        "q": 1,
+        "inputs":{
+            "gear": 1,
+            "pipe": 2,
+            "steel": 1
+            }
+    },
+  
+
+    "green science":{
+        "T": 6,
+        "q": 1,
+        "inputs":{
+            "belt": 1,
+            "inserter": 1
+            }
+    },
+    "blue science":{
+        "T": 24,
+        "q": 2,
+        "inputs":{
+            "engine": 2,
+            "4pcb": 3,
+            "sulfur": 1
+            }
+    },
+    "purp science":{
+        "T": 21,
+        "q": 3,
+        "inputs":{
+            "prod module 1": 1,
+            "furnace": 1,
+            "rail": 30
+            }
+    },
+    "yellow science":{
+        "T": 21,
+        "q": 3,
+        "inputs":{
+            "roboframe": 1,
+            "lds": 3,
+            "osh park": 2
+            }
+    },
+
+
+    "lds":{
+        "T": 20,
+        "q": 1,
+        "inputs":{
+            "copper plate": 20,
+            "plastic": 5,
+            "steel": 2
+            }
+    },
+
+    "roboframe":{
+        "T": 20,
+        "q": 1,
+        "inputs":{
+            "battery": 2,
+            "electric engine": 1,
+            "steel": 1,
+            "circuit": 2
+            }
+    },
+
+    "battery":{
+        "T": 4,
+        "q": 1,
+        "inputs":{
+            "iron plate": 1,
+            "copper plate": 1,
+            "h2so4": 20
+            }
+    },
+
+    "electric engine":{
+        "T": 10,
+        "q": 1,
+        "inputs":{
+            "engine": 1,
+            "circuit": 2,
+            "lube": 15
+            }
+    },
+
+    "rocket part":{
+        "T": 3,
+        "q": 1,
+        "inputs":{
+            "rocket fuel": 10,
+            "control unit": 10,
+            "lds": 10
+            }
+    },
+
+    "satellite":{
+        "T": 5,
+        "q": 1,
+        "inputs":{
+            "rocket fuel": 50,
+            "lds": 100,
+            "osh park": 100,
+            "accumulator": 100,
+            "solar panel": 100,
+            "radar": 5
+            }
+    },
+
+    "accumulator":{
+        "T": 10,
+        "q": 1,
+        "inputs":{
+            "battery": 5,
+            "iron plate": 2
+            }
+    },
+
+    "solar panel":{
+        "T": 10,
+        "q": 1,
+        "inputs":{
+            "copper plate": 5,
+            "steel": 5,
+            "circuit": 15
+            }
+    },
+
+    "radar":{
+        "T": 0.5,
+        "q": 1,
+        "inputs":{
+            "gear": 5,
+            "circuit": 5,
+            "iron plate": 10
+            }
+    },
+
+
+
+    "control unit":{
+        "T": 30,
+        "q": 1,
+        "inputs":{
+            "osh park": 1,
+            "speed module 1": 1
+            }
+    },
+
+    "rocket fuel":
+    {
+        "T": 30,
+        "q": 1,
+        "inputs":{
+            "light oil": 10,
+            "solid fuel": 10
+            }
+    },
+
+
+    "furnace":{
+        "T": 5,
+        "q": 1,
+        "inputs":{
+            "brick": 10,
+            "4pcb": 5,
+            "steel": 10
+            }
+    },
+
+    "rail":{
+        "T": 0.5,
+        "q": 2,
+        "inputs":{
+            "stick": 1,
+            "rocks": 1,
+            "steel": 1
+            }
+    },
+    "stick":{
+        "T": 0.5,
+        "q": 2,
+        "inputs":{
+            "iron plate": 1
+            }
+    },
+
+
+
+
+   
+    "speed module 1":{
+        "T": 15,
+        "q": 1,
+        "inputs":{
+            "circuit": 5,
+            "4pcb": 5
+            }
+    },
+    "prod module 1":{
+        "T": 15,
+        "q": 1,
+        "inputs":{
+            "circuit": 5,
+            "4pcb": 5
+            }
+    },
+
+
+
+
+    "steel":{
+        "T": 6.4,
+        "q": 1,
+        "inputs":{
+            "iron plate": 5
+            }
+    },
+
+
+
     "copper plate":{
         "T": 1,
         "q": 1,
@@ -37,18 +310,72 @@
         "T": 1,
         "q": 1,
         "inputs": {}
+    },
+    "coal":{
+        "T": 1,
+        "q": 1,
+        "inputs": {}
+    },
+    "brick":{
+        "T": 1,
+        "q": 1,
+        "inputs": {}
+    },
+    "sulfur":{
+        "T": 1,
+        "q": 1,
+        "inputs": {}
     }
+
 },
 "modules":{
     "coil": [4,0],
     "circuit": [4,0],
     "4pcb": [3,1],
+    "osh park": [4,0],
+    "speed module 1": [0,0], 
+    "speed module 2": [0,0],
+    "speed module 3": [0,0],    
+    "prod module 1": [0,0], 
+    "prod module 2": [0,0],
+    "prod module 3": [0,0],    
+    "gear": [4,0],
+    "pipe": [4,0],
+    "electric engine": [4,0],
+    "roboframe": [4,0],
+    "battery": [4,0],
+    "lds": [4,0],   
+    "engine": [4,0],
+    "red science": [4,0],
+    "green science": [4,0],
+    "blue science": [4,0],
+    "purp science": [4,0],
+    "yellow science": [4,0], 
+    "rocket part": [4,0],
+    "control unit": [4,0], 
+    "rocket fuel": [0,3], 
+    "stick": [4,0],     
+    "satellite": [0,0],   
+    "accumulator": [0,0],
+    "solar panel": [0,0],
+    "radar": [0,0],
+    "rail": [0,0],
+    "furnace": [0,0],
+    "belt": [0,0],
+    "inserter": [0,0],   
     "copper plate": [2,0],
     "iron plate": [2,0],
-    "plastic": [0,3]
+    "plastic": [0,3],
+    "steel": [2,0]
 },
 "goals":{
-    "4pcb": 7.5
+    "red science": 1,
+    "green science": 1,
+    "blue science": 1,
+    "yellow science": 1,
+    "purp science": 1,
+    "rocket part": 0.1,
+    "satellite": 0.001
 }
 
 }

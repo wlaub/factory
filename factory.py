@@ -96,20 +96,31 @@ class Factory():
             if len(self.recipes[name].inputs.keys()) == 0:
                 rate = requirements[name]
                 print(f'Raw material {name} is required at a rate of {rate:.2f}/s')
+
+        table = [["Recipe", "Rate (/s)", "# Assemblers", "Prod", "Speed"]]
+
+        print('')
+        for name, Fo in requirements.items():
+            if len(self.recipes[name].inputs.keys()) == 0:
                 continue
+ 
             mods = self.modules[name]
             rec = self.recipes[name]
-            print(f'Recipe {name} at {Fo:.2f}/s with Np = {mods["Np"]} and Ns = {mods["Ns"]}')
+#            print(f'Recipe {name} at {Fo:.2f}/s with Np = {mods["Np"]} and Ns = {mods["Ns"]}')
             N = rec.get_assemblers(Fo, **mods)
 
-            print(f'Requires {N:.2f} assemblers to produce')
+#            print(f'Requires {N:.2f} assemblers to produce')
 
             in_rates = rec.get_inputs(Fo, **mods)
-            for in_name, rate in in_rates.items():
-                print(f'  {in_name}: {rate:.2f}/s')
+#            for in_name, rate in in_rates.items():
+#                print(f'  {in_name}: {rate:.2f}/s')
+            list_name = name
+            if name in self.goals.keys():
+                list_name += '*'
+            table.append([list_name, Fo, N, mods['Np'], mods['Ns']])
 
-
-
+        import tabulate
+        print(tabulate.tabulate(table, headers='firstrow'))
 
 
 
