@@ -13,15 +13,42 @@
             "coil": 3,
             "iron plate": 1
             }
-        }
+        },
+    "4pcb":{
+        "T":10,
+        "q":1,
+        "inputs": {
+            "coil": 1,
+            "circuit": 2,
+            "plastic": 1
+            }
+    },
+    "copper plate":{
+        "T": 1,
+        "q": 1,
+        "inputs": {}
+    },
+    "iron plate":{
+        "T": 1,
+        "q": 1,
+        "inputs": {}
+    },
+    "plastic":{
+        "T": 1,
+        "q": 1,
+        "inputs": {}
+    }
 },
 "modules":{
     "coil": [4,0],
-    "circuit": [4,0]
-}
+    "circuit": [4,0],
+    "4pcb": [3,1],
+    "copper plate": [2,0],
+    "iron plate": [2,0],
+    "plastic": [0,3]
+},
 "goals":{
-    "circuit": 45,
-    "copper plate": 45
+    "4pcb": 7.5
 }
 
 }

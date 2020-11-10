@@ -21,6 +21,17 @@ class Recipe():
         #This is the base number of each input required per output
         self.Nib = {name: N/q for name,N in inputs.items()}
 
+    def get_input(self, name, Fo, Np, Ns):
+        """
+        For a given desired output frequency, 
+        number of productivity modules,
+        number of speed modules,
+        return the input frequencies of each input as
+        {name: rate}
+        """
+        return Fo*self.Nib[name]/(1+.1*Np)
+
+
     def get_inputs(self, Fo, Np, Ns):
         """
         For a given desired output frequency, 
@@ -41,29 +52,64 @@ class Recipe():
         N = Fo/Feff
         return N
 
+    def get_sinks(self):
+        return self.inputs.keys()
+
 class Factory():
     def __init__(self, filename):
         raw = json.load(open(filename, 'r'))
         self.recipes = {}
         for name, data in raw['recipes'].items() :
             self.recipes[name] = Recipe(name, **data)
-        self.modules = raw['modules']
+        self.modules = {}
+        for name, (Np, Ns) in raw['modules'].items():
+            self.modules[name] = {'Np': Np, 'Ns': Ns}
+        self.goals = raw['goals']
 
     def print(self):
-        for name, rec in self.recipes.items():
-            _mods = self.modules[name]
-            mods = {'Np': _mods[0], 'Ns': _mods[1]}
-            Fo = 45
+        sinks = {}
+        for name in self.recipes.keys():
+            sinks[name] = []
+            for other in self.recipes.keys():
+                if other != name and name in self.recipes[other].inputs.keys():
+                    sinks[name].append(other)
 
-            print(f'Recipe {name} at {Fo}/s with Np = {mods["Np"]} and Ns = {mods["Ns"]}')
+
+        done = []
+        names = self.recipes.keys()
+        todo = [x for x in names if not x in done]
+        requirements = dict(self.goals)
+        while len(done) < len(names):
+            for name in todo:
+                if all([sink in done for sink in sinks[name]]):
+                    if not name in requirements.keys(): 
+                        requirements[name]=0
+                    for sink in sinks[name]:
+                        Fs = requirements[sink]
+                        sink_recipe = self.recipes[sink]
+                        mods = self.modules[sink]
+                        requirements[name] += sink_recipe.get_input(name, Fs, **mods)
+                    done.append(name)
+                    todo.remove(name)
+
+        for name, Fo in requirements.items():
+            if len(self.recipes[name].inputs.keys()) == 0:
+                rate = requirements[name]
+                print(f'Raw material {name} is required at a rate of {rate:.2f}/s')
+                continue
+            mods = self.modules[name]
+            rec = self.recipes[name]
+            print(f'Recipe {name} at {Fo:.2f}/s with Np = {mods["Np"]} and Ns = {mods["Ns"]}')
             N = rec.get_assemblers(Fo, **mods)
 
             print(f'Requires {N:.2f} assemblers to produce')
 
             in_rates = rec.get_inputs(Fo, **mods)
-
             for in_name, rate in in_rates.items():
-                print(f'  {in_name}: {rate}/s')
+                print(f'  {in_name}: {rate:.2f}/s')
+
+
+
 
 
 
