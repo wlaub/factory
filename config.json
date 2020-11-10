@@ -118,6 +118,42 @@
             "osh park": 2
             }
     },
+    "black science":{
+        "T": 10,
+        "q": 2,
+        "inputs":{
+            "grenade": 1,
+            "red clip": 1,
+            "wall": 2
+            }
+    },
+
+    "grenade":{
+        "T": 8,
+        "q": 1,
+        "inputs":{
+            "coal": 10,
+            "iron plate": 5
+            }
+    },
+
+    "red clip":{
+        "T": 3,
+        "q": 1,
+        "inputs":{
+            "steel": 1,
+            "clip": 1,
+            "copper plate": 5
+            }
+    },
+
+    "clip":{
+        "T": 1,
+        "q": 1,
+        "inputs":{
+            "iron plate": 4
+            }
+    },
 
 
     "lds":{
@@ -331,12 +367,12 @@
 "modules":{
     "coil": [4,0],
     "circuit": [4,0],
-    "4pcb": [3,1],
+    "4pcb": [4,0],
     "osh park": [4,0],
-    "speed module 1": [0,0], 
+    "speed module 1": [0,3], 
     "speed module 2": [0,0],
     "speed module 3": [0,0],    
-    "prod module 1": [0,0], 
+    "prod module 1": [0,3], 
     "prod module 2": [0,0],
     "prod module 3": [0,0],    
     "gear": [4,0],
@@ -344,20 +380,24 @@
     "electric engine": [4,0],
     "roboframe": [4,0],
     "battery": [4,0],
-    "lds": [4,0],   
+    "lds": [3,1],   
     "engine": [4,0],
     "red science": [4,0],
     "green science": [4,0],
     "blue science": [4,0],
     "purp science": [4,0],
     "yellow science": [4,0], 
+    "black science": [4,0],
     "rocket part": [4,0],
-    "control unit": [4,0], 
+    "control unit": [3,1], 
     "rocket fuel": [0,3], 
     "stick": [4,0],     
     "satellite": [0,0],   
     "accumulator": [0,0],
     "solar panel": [0,0],
+    "clip": [0,0],
+    "red clip": [0,0],
+    "grenade": [0,3],
     "radar": [0,0],
     "rail": [0,0],
     "furnace": [0,0],
@@ -375,7 +415,8 @@
     "yellow science": 1,
     "purp science": 1,
     "rocket part": 0.1,
-    "satellite": 0.001
+    "satellite": 0.001,
+    "black science": 1
 }
 
 }
