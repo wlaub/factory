@@ -180,6 +180,7 @@
     "battery":{
         "T": 4,
         "q": 1,
+        "crafting_speed": 1,
         "inputs":{
             "iron plate": 1,
             "copper plate": 1,
@@ -445,7 +446,7 @@
     "pipe": [4,0],
     "electric engine": [4,0],
     "roboframe": [4,0],
-    "battery": [4,0],
+    "battery": [3,0],
     "lds": [3,1],   
     "engine": [4,0],
     "red science": [4,0],

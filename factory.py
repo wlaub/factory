@@ -128,10 +128,13 @@ class Factory():
 
         import tabulate
         print(tabulate.tabulate(table, headers='firstrow'))
+        print("")
+        self.print_single('circuit')
+        self.print_single('4pcb')
 
-        print('')
-        #inputs required for circuit
-        target = "circuit"
+    def print_single(self, target):
+        #inputs required for target
+        requirements = self.requirements
         Fo = requirements[target]
         mods = self.modules[target]
         assemblers = self.recipes[target].get_assemblers(Fo, **mods)
