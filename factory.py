@@ -66,7 +66,9 @@ class Factory():
             self.modules[name] = {'Np': Np, 'Ns': Ns}
         self.goals = raw['goals']
 
-    def print(self):
+        self.update_requirements()
+
+    def update_requirements(self):
         sinks = {}
         for name in self.recipes.keys():
             sinks[name] = []
@@ -78,7 +80,7 @@ class Factory():
         done = []
         names = self.recipes.keys()
         todo = [x for x in names if not x in done]
-        requirements = dict(self.goals)
+        self.requirements = requirements = dict(self.goals)
         while len(done) < len(names):
             for name in todo:
                 if all([sink in done for sink in sinks[name]]):
@@ -92,6 +94,10 @@ class Factory():
                     done.append(name)
                     todo.remove(name)
 
+
+    def print(self):
+        #raw ingredients
+        requirements = self.requirements
         for name, Fo in requirements.items():
             if len(self.recipes[name].inputs.keys()) == 0:
                 rate = requirements[name]
@@ -100,6 +106,7 @@ class Factory():
         table = [["Recipe", "Rate (/s)", "# Assemblers", "Prod", "Speed"]]
 
         print('')
+        #machine items
         for name, Fo in requirements.items():
             if len(self.recipes[name].inputs.keys()) == 0:
                 continue
@@ -122,5 +129,16 @@ class Factory():
         import tabulate
         print(tabulate.tabulate(table, headers='firstrow'))
 
+        print('')
+        #inputs required for circuit
+        target = "circuit"
+        Fo = requirements[target]
+        mods = self.modules[target]
+        assemblers = self.recipes[target].get_assemblers(Fo, **mods)
+        print(f'Producing {target} at {Fo:.2f}/s from {assemblers} machines')
+        for name, rate in self.recipes[target].get_inputs(Fo, **mods).items():
+            inmods = self.modules[name]
+            assemblers = self.recipes[name].get_assemblers(rate, **inmods)
+            print(f' * Requires {name} at {rate:.2f}/s from {assemblers} machines')
 
 
