@@ -1,7 +1,7 @@
 import json
 
 class Recipe():
-    def __init__(self, name, q, T, inputs):
+    def __init__(self, name, q, T, inputs, crafting_speed = 1.25):
         """
         name is the name of the recipe e.g. circuit, 4pcb
         q is the number produced per recipe
@@ -14,7 +14,7 @@ class Recipe():
         self.T = T
         self.inputs = inputs
 
-        self.Fb = 1.25*q/T #The base frequency per machine
+        self.Fb = crafting_speed*q/T #The base frequency per machine
 
         self.extra = 0 #The number of excess products per second to produce
 #        self.Fib = {name: N/q*1.25/T for name,N in inputs.items()}

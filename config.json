@@ -342,8 +342,9 @@
 
 
     "steel":{
-        "T": 6.4,
+        "T": 16,
         "q": 1,
+        "crafting_speed": 2,
         "inputs":{
             "iron plate": 5
             }
@@ -352,34 +353,59 @@
 
 
     "copper plate":{
-        "T": 1,
+        "T": 3,
         "q": 1,
-        "inputs": {}
+        "crafting_speed": 2,
+        "inputs": {"copper ore": 1}
     },
     "iron plate":{
-        "T": 1,
+        "T": 3.2,
         "q": 1,
-        "inputs": {}
+        "crafting_speed": 2,
+        "inputs": {
+            "iron ore": 1
+            }
     },
+    "iron ore":{"T":1,"q":1, "inputs":{}},
+    "copper ore":{"T":1,"q":1, "inputs":{}},   
+    "gas":{"T":1,"q":1, "inputs":{}},   
     "plastic":{
         "T": 1,
-        "q": 1,
-        "inputs": {}
+        "q": 2,
+        "crafting_speed": 1,
+        "inputs": {
+            "coal": 1,
+            "gas": 20
+            }
     },
-    "coal":{
-        "T": 1,
-        "q": 1,
-        "inputs": {}
-    },
+    "coal":{"T": 1, "q": 1, "inputs": {}},
     "brick":{
-        "T": 1,
+        "T": 3.2,
         "q": 1,
-        "inputs": {}
+        "crafting_speed": 2,
+        "inputs": {
+            "rocks": 2
+            }
     },
+    "rocks":{"T": 1, "q": 1, "inputs": {}},
     "sulfur":{
         "T": 1,
-        "q": 1,
-        "inputs": {}
+        "q": 2,
+        "crafting_speed": 1,
+        "inputs": {
+            "gas": 30,
+            "water": 30
+        }
+    },
+    "h2so4":{
+        "T": 1,
+        "q": 50,
+        "crafting_speed": 1,
+        "inputs":{
+            "iron plate": 1,
+            "sulfur": 5,
+            "water": 100
+            }
     }
 
 },
@@ -403,7 +429,7 @@
     "engine": [4,0],
     "red science": [4,0],
     "green science": [4,0],
-    "blue science": [4,0],
+    "blue science": [3,1],
     "purp science": [4,0],
     "yellow science": [4,0], 
     "black science": [4,0],
@@ -425,7 +451,10 @@
     "copper plate": [2,0],
     "iron plate": [2,0],
     "plastic": [0,3],
-    "steel": [2,0]
+    "steel": [2,0],
+    "sulfur": [0,3],
+    "h2so4": [0,3],
+    "brick": [2,0]
 },
 "goals":{
     "red science": 1,
