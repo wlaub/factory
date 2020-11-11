@@ -260,6 +260,16 @@
             }
     },
 
+    "solid fuel":
+    {
+        "T": 2,
+        "q": 1,
+        "crafting_speed": 1,
+        "inputs":{
+            "light oil": 10
+        }
+    },
+
     "rocket fuel":
     {
         "T": 30,
@@ -379,6 +389,8 @@
             }
     },
     "coal":{"T": 1, "q": 1, "inputs": {}},
+    "light oil":{"T": 1, "q": 1, "inputs": {}},   
+    "heavy oil":{"T": 1, "q": 1, "inputs": {}},   
     "brick":{
         "T": 3.2,
         "q": 1,
@@ -388,6 +400,15 @@
             }
     },
     "rocks":{"T": 1, "q": 1, "inputs": {}},
+    "lube":{
+        "T": 1,
+        "q": 10,
+        "crafting_speed": 1,
+        "inputs": {
+            "heavy oil": 10
+        }
+    },
+ 
     "sulfur":{
         "T": 1,
         "q": 2,
@@ -435,7 +456,7 @@
     "black science": [4,0],
     "rocket part": [4,0],
     "control unit": [3,1], 
-    "rocket fuel": [0,3], 
+    "rocket fuel": [0,4], 
     "stick": [4,0],     
     "satellite": [0,0],   
     "accumulator": [0,3],
@@ -454,7 +475,9 @@
     "steel": [2,0],
     "sulfur": [0,3],
     "h2so4": [0,3],
-    "brick": [2,0]
+    "brick": [2,0],
+    "lube": [0,3],
+    "solid fuel": [0,3]
 },
 "goals":{
     "red science": 1,
